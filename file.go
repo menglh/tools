@@ -19,7 +19,7 @@ func Stat(filename string) (os.FileInfo, error) {
 // -1: all; 1: dirname; 2: basename; 4: extension; 8: filename
 // Usage:
 // Pathinfo("/home/go/path/src/php2go/php2go.go", 1|2|4|8)
-func Pathinfo(path string, options int) map[string]string {
+func PathInfo(path string, options int) map[string]string {
 	if options == -1 {
 		options = 1 | 2 | 4 | 8
 	}
