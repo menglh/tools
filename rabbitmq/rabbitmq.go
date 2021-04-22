@@ -19,7 +19,7 @@ type RabbitMQ struct {
 }
 
 //创建RabbitMQ结构体实例
-func NewRabbitMQ(queueName string, exchange string, key string) *RabbitMQ {
+func newRabbitMQ(queueName string, exchange string, key string) *RabbitMQ {
 	rabbitmq := &RabbitMQ{QueueName: queueName, Exchange: exchange, Key: key, MqUrl: MqUrl}
 	var err error
 	//创建rabbitmq连接
@@ -63,7 +63,7 @@ exchange交换机会默认使用default交换机  绑定建key的会不必要传
 */
 
 func NewSimple(queueName string) *RabbitMQ {
-	return NewRabbitMQ(queueName, "", "")
+	return newRabbitMQ(queueName, "", "")
 }
 
 //简单模式step:2.简单模式下生产者
@@ -165,7 +165,7 @@ func (r *RabbitMQ) ConsumeSimple() {
 
 //订阅模式step1:创建rabbitmq实例
 func NewSubscribe(exchangeName string) *RabbitMQ {
-	return NewRabbitMQ("", exchangeName, "")
+	return newRabbitMQ("", exchangeName, "")
 }
 
 //订阅模式step2:生产者
@@ -260,7 +260,7 @@ func (r *RabbitMQ) ReceiveSubscribe() {
 
 //路由模式step1:创建RabbitMQ实例
 func NewRouting(exchangeName string, routingKey string) *RabbitMQ {
-	return NewRabbitMQ("", exchangeName, routingKey)
+	return newRabbitMQ("", exchangeName, routingKey)
 }
 
 //路由模式step2:发送消息
@@ -355,7 +355,7 @@ func (r *RabbitMQ) ReceiveRouting() {
 
 //topic主题模式step1:创建RabbitMQ实例
 func NewTopic(exchange string, routingkey string) *RabbitMQ {
-	return NewRabbitMQ("", exchange, routingkey)
+	return newRabbitMQ("", exchange, routingkey)
 }
 
 //topic主题模式step2:发送消息
