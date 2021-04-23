@@ -176,10 +176,8 @@ func (r *RabbitMQ) PublishSubscribe(message string) {
 		r.Exchange,
 		//广播类型  订阅模式下我们需要将类型设置为广播类型
 		"fanout",
-		//进入的消息是否持久化 进入队列如果不消费那么消息就在队列里面 如果重启服务器那么这个消息就没啦 通常设置为false
 		true,
 		false,
-		//true表示这个exchange不可以被客户端用来推送消息，仅仅是用来进行exchange和exchange之间的绑定
 		false,
 		false,
 		nil,
