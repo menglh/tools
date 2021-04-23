@@ -108,7 +108,7 @@ func (r *RabbitMQ) PublishSimple(message string) {
 }
 
 //简单模式step:3.简单模式下消费者代码
-func (r *RabbitMQ) ConsumeSimple() {
+func (r *RabbitMQ) ReceiveSimple() {
 	//1.申请队列,如果队列不存在，则会自动创建，如果队列存在则跳过创建直接使用  这样的好处保障队列存在，消息能发送到队列当中
 	_, err := r.channel.QueueDeclare(
 		//队列名称
